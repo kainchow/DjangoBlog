@@ -8,6 +8,7 @@ from django.templatetags.static import static
 from django.test import Client, RequestFactory, TestCase
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 from accounts.models import BlogUser
 from blog.forms import BlogSearchForm
@@ -117,7 +118,7 @@ class ArticleTest(TestCase):
         self.check_pagination(p, '作者文章归档', 'zhoukai0607')
 
         p = Paginator(Article.objects.filter(category=category), settings.PAGINATE_BY)
-        self.check_pagination(p, '分类目录归档', category.slug)
+        self.check_pagination(p, _('Catalog Archives'), category.slug)
 
         f = BlogSearchForm()
         f.search()

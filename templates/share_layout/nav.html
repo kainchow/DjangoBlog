@@ -4,26 +4,28 @@
     <div class="menu-%e8%8f%9c%e5%8d%95-container">
         <ul id="menu-%e8%8f%9c%e5%8d%95" class="nav-menu">
             <li id="menu-item-3498"
-                class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3498">
-                <a href="/">{% trans 'index' %}</a></li>
+                class="menu-item {% if request.path == '/' %} current-menu-item current_page_item{% endif %} menu-item-home menu-item-3498">
+                <a href="/">{% trans 'index' %}</a>
+            </li>
 
             {% load blog_tags %}
-            {% query nav_category_list parent_category=None as root_categorys %}
-            {% for node in root_categorys %}
+            {% query nav_category_list parent_category=None as root_categories %}
+            {% for node in root_categories %}
                 {% include 'share_layout/nav_node.html' %}
             {% endfor %}
             {% if nav_pages %}
                 {% for node in nav_pages %}
-
                     <li id="menu-item-{{ node.pk }}"
-                        class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-{{ node.pk }}">
+                        class="menu-item {% if request.path == node.get_absolute_url %} current-menu-item current_page_item{% endif %} menu-item-has-children menu-item-{{ node.pk }}">
                         <a href="{{ node.get_absolute_url }}">{{ node.title }}</a>
                     </li>
                 {% endfor %}
             {% endif %}
-            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children">
-
+            <li class="menu-item {% if request.resolver_match.url_name == 'archives' %} current-menu-item current_page_item{% endif %}">
                 <a href="{% url "blog:archives" %}">{% trans 'Article archive' %}</a>
+            </li>
+            <li class="menu-item {% if request.resolver_match.url_name == 'big_screen' %} current-menu-item current_page_item{% endif %}">
+                <a href="{% url "blog:big_screen" %}">{% trans 'Big screen' %}</a>
             </li>
         </ul>
     </div>

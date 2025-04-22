@@ -15,6 +15,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from haystack.views import SearchView
 
+from blog.data import SourceData, CorpData
 from blog.models import Article, Category, LinkShowType, Links, Tag
 from comments.forms import CommentForm
 from djangoblog.utils import cache, get_blog_setting, get_sha256
@@ -161,7 +162,7 @@ class CategoryDetailView(ArticleListView):
     """
     分类目录列表
     """
-    page_type = "分类目录归档"
+    page_type = _("Catalog Archives")
 
     def get_queryset_data(self):
         slug = self.kwargs['category_name']
@@ -296,6 +297,33 @@ class EsSearchView(SearchView):
         return context
 
 
+class BigScreenView(ListView):
+    template_name = "blog/big_screen.html"
+    context_object_name = "big_screen_data"
+    data = SourceData()
+
+    def get_queryset(self):
+        return self.data
+
+
+class BigScreen1View(ListView):
+    template_name = "big_screen/big_screen1.html"
+    context_object_name = "big_screen_data"
+    data = SourceData()
+
+    def get_queryset(self):
+        return self.data
+
+
+class BigScreen2View(ListView):
+    template_name = "big_screen/big_screen2.html"
+    context_object_name = "big_screen_data"
+    data = CorpData()
+
+    def get_queryset(self):
+        return self.data
+
+
 @csrf_exempt
 def fileupload(request):
     """
@@ -373,3 +401,7 @@ def permission_denied_view(
 def clean_cache_view(request):
     cache.clear()
     return HttpResponse('ok')
+
+
+# def big_screen1_view(request):
+#     return render(request, 'big_screen/big_screen1.html')

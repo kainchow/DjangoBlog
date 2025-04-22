@@ -59,4 +59,16 @@ urlpatterns = [
         r'clean',
         views.clean_cache_view,
         name='clean'),
+    path(
+        'big_screen.html',
+        views.BigScreenView.as_view(),
+        name='big_screen'),
+    path(
+        'bigscreen1/',
+        views.BigScreen1View.as_view(),
+        name='big_screen1'),
+    path(
+        'bigscreen2/',
+        views.BigScreen2View.as_view(),
+        name='big_screen2'),
 ]

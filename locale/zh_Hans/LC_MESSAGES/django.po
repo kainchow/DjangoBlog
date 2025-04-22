@@ -669,3 +669,19 @@ msgstr "文章归档"
 #: .\accounts\views.py:197
 msgid "Incorrect mailbox"
 msgstr "不正确的邮箱"
+
+#: .\blog\views.py:164
+msgid "Catalog Archives"
+msgstr "分类目录归档"
+
+#: .\templates\blog\links_list.html:6
+msgid "Friend Links"
+msgstr "友情链接"
+
+#: .\templates\share_layout\footer.html:24
+msgid "Baidu statistics"
+msgstr "百度统计"
+
+#: .\templates\share_layout\nav.html:28
+msgid "Big screen"
+msgstr "大屏"

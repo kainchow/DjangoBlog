@@ -1,3 +1,4 @@
+{% load i18n %}
 <footer id="colophon" role="contentinfo">
     <div class="site-info" style="text-align: center">
         Copyright&copy;&nbsp;{{ CURRENT_YEAR }}&nbsp;
@@ -12,15 +13,15 @@
             RSS Feed
         </a>
         &nbsp;|&nbsp;
-        <a href="/links.html" title="友情链接" rel="nofollow" target="_blank">
-            友情链接
+        <a href="/links.html" title="{% trans 'Friend Links' %}" rel="nofollow" target="_blank">
+            Friend Links
         </a>
         |&nbsp; Hosting On&nbsp;
         <a href="https://www.linode.com/?r=b0d38794d05ef8816b357a929106e89b7c6452f9" target="blank" rel="nofollow">Linode</a>
 
         |&nbsp;
         <a href="https://tongji.baidu.com/sc-web/3478620/home/ico?siteId=11261596" target="_blank"
-           rel="nofollow">百度统计</a>
+           rel="nofollow">{% trans 'Baidu statistics' %}</a>
 
     </div>
     <div class="site-info" style="text-align: center">

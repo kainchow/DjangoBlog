@@ -11,6 +11,7 @@ from django.template.defaultfilters import stringfilter
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 
 from blog.models import Article, Category, Tag, Links, SideBar, LinkShowType
 from comments.models import Comment
@@ -243,7 +244,7 @@ def load_pagination_info(page_obj, page_type, tag_name):
                     'page': previous_number,
                     'author_name': tag_name})
 
-    if page_type == '分类目录归档':
+    if page_type == _('Catalog Archives'):
         category = get_object_or_404(Category, name=tag_name)
         if page_obj.has_next():
             next_number = page_obj.next_page_number()

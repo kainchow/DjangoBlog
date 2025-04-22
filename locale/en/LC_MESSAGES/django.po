@@ -687,3 +687,19 @@ msgstr "Article archive"
 #: .\accounts\views.py:197
 msgid "Incorrect mailbox"
 msgstr "Incorrect mailbox"
+
+#: .\blog\views.py:164
+msgid "Catalog Archives"
+msgstr "Catalog Archives"
+
+#: .\templates\blog\links_list.html:6
+msgid "Friend Links"
+msgstr "Friend Links"
+
+#: .\templates\share_layout\footer.html:24
+msgid "Baidu statistics"
+msgstr "Baidu statistics"
+
+#: .\templates\share_layout\nav.html:28
+msgid "Big screen"
+msgstr "Big screen"

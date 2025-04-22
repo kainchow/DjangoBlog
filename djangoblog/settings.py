@@ -68,10 +68,10 @@ MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     # 'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -146,8 +146,8 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-# LANGUAGE_CODE = 'zh-hans'
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
+# LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Asia/Shanghai'
 

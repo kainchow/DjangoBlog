@@ -4,7 +4,7 @@
 {% load i18n %}
 {% block header %}
 
-    <title>{% trans 'Friend Links' %} | {{ SITE_DESCRIPTION }}</title>
+    <title>{% trans 'Big screen' %} | {{ SITE_DESCRIPTION }}</title>
 
     <meta name="description" content="{{ SITE_SEO_DESCRIPTION }}"/>
     <meta name="keywords" content="{{ SITE_KEYWORDS }}"/>
@@ -19,18 +19,20 @@
     <div id="primary" class="site-content">
         <div id="content" role="main">
 
-            <header class="archive-header">
+            <header class="big_screen-header">
 
-                <p class="archive-title">{% trans 'Friend Links' %}</p>
-            </header><!-- .archive-header -->
+                <p class="big_screen-title">{% trans 'Big screen' %}</p>
+            </header>
 
-            <div class="entry-content">
-                <ul>
-                    {% for obj in object_list %}
-                        <li>
-                            <a href="{{ obj.link }}">{{ obj.name }}</a>
-                        </li>
-                    {% endfor %} </ul>
+            <div class="big-screen-body">
+                <div class="preview-card">
+                    <iframe src="{% url 'blog:big_screen1' %}"></iframe>
+                    <a class="preview-link-overlay" href="{% url 'blog:big_screen1' %}" title="点击查看完整页面"></a>
+                </div>
+                <div class="preview-card">
+                    <iframe src="{% url 'blog:big_screen2' %}"></iframe>
+                    <a class="preview-link-overlay" href="{% url 'blog:big_screen2' %}" title="点击查看完整页面"></a>
+                </div>
             </div>
         </div><!-- #content -->
     </div><!-- #primary -->

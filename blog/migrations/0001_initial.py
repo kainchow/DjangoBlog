@@ -54,8 +54,8 @@ class Migration(migrations.Migration):
                 ('last_mod_time', models.DateTimeField(default=django.utils.timezone.now, verbose_name='修改时间')),
             ],
             options={
-                'verbose_name': '友情链接',
-                'verbose_name_plural': '友情链接',
+                'verbose_name': 'Friend Links',
+                'verbose_name_plural': 'Friend Links',
                 'ordering': ['sequence'],
             },
         ),
