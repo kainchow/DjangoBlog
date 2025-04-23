@@ -245,7 +245,7 @@ class JobData(SourceDataDemo):
         按照 SourceDataDemo 的格式覆盖数据即可
         """
         super().__init__()
-        with open('job.json', 'r', encoding='utf-8') as f:
+        with open('blog/job.json', 'r', encoding='utf-8') as f:
             data = json.loads(f.read())
         self.title = data.get('title')
         self.counter = data.get('counter')
