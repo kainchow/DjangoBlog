@@ -685,3 +685,7 @@ msgstr "百度统计"
 #: .\templates\share_layout\nav.html:28
 msgid "Big screen"
 msgstr "大屏"
+
+#: .\templates\blog\tags\sidebar.html:26
+msgid "Views"
+msgstr "阅读量"

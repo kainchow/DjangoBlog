@@ -23,13 +23,13 @@
     {% endif %}
     {% if most_read_articles %}
 
-        <aside id="views-4" class="widget widget_views"><p class="widget-title">Views</p>
+        <aside id="views-4" class="widget widget_views"><p class="widget-title">{% trans 'Views' %}</p>
             <ul>
                 {% for a in most_read_articles %}
                     <li>
                         <a href="{{ a.get_absolute_url }}" title="{{ a.title }}">
                             {{ a.title }}
-                        </a> - {{ a.views }} views
+                        </a> - {{ a.views }} {% trans 'views' %}
                     </li>
                 {% endfor %}
             </ul>

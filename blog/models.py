@@ -188,6 +188,12 @@ class Category(BaseModel):
             'blog:category_detail', kwargs={
                 'category_name': self.slug})
 
+    def get_absolute_urls(self):
+        """
+        获取当前分类及其所有父分类的绝对URL列表
+        """
+        return [category.get_absolute_url() for category in self.get_category_tree()]
+
     def __str__(self):
         return self.name
 

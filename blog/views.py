@@ -192,8 +192,14 @@ class CategoryDetailView(ArticleListView):
             categoryname = categoryname.split('/')[-1]
         except BaseException:
             pass
+
+        current_category = get_object_or_404(Category, name=categoryname)
+        category_tree_slugs = [c.slug for c in current_category.get_category_tree()]
+
         kwargs['page_type'] = CategoryDetailView.page_type
         kwargs['tag_name'] = categoryname
+        kwargs['category_tree_slugs'] = category_tree_slugs
+
         return super(CategoryDetailView, self).get_context_data(**kwargs)
 
 
