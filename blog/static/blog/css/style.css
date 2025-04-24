@@ -59,7 +59,8 @@ body {
 }
 
 .top-bar-left h1 a {
-    color: #2196f3;
+    color: #E0E0E0
+;
     display: inline-block;
     text-decoration: none;
 }
@@ -697,12 +698,12 @@ a:hover {
 /* 确保下拉菜单中的链接也使用相同的颜色 */
 .main-navigation ul ul a,
 .nav-menu ul ul a {
-    color: rgb(67, 97, 238) !important; /* 紫色 */
+    color: #B0B8C1 !important;
 }
 
 .main-navigation ul ul a:hover,
 .nav-menu ul ul a:hover {
-    color: rgb(106, 176, 76) !important; /* 金色 */
+    color: #FF6AC1 !important;
 }
 
 /* 当前活动菜单项的颜色 */
@@ -714,7 +715,7 @@ a:hover {
 .nav-menu .current-menu-ancestor > a,
 .nav-menu .current_page_item > a,
 .nav-menu .current_page_ancestor > a {
-    color: rgb(106, 176, 76) !important; /* 当前选中项为金色 */
+    color: #FF6AC1 !important;
     font-weight: bold;
 }
 
@@ -723,7 +724,7 @@ a:hover {
 .main-navigation li a,
 .nav-menu li a,
 .nav-menu a {
-    color: rgb(67, 97, 238) !important; /* 非当前项为紫色 */
+    color: #B0B8C1 !important;
     font-weight: 500;
     transition: color 0.3s ease;
     font-size: 16px;
@@ -737,13 +738,13 @@ a:hover {
 .nav-menu li a:focus,
 .nav-menu a:hover,
 .nav-menu a:focus {
-    color: rgb(106, 176, 76) !important; /* 悬停时为金色 */
+    color: #FF6AC1 !important;
 }
 
 /* 确保响应式布局中也保持相同的颜色方案 */
 @media screen and (min-width: 600px) {
     .main-navigation li a {
-        color: rgb(67, 97, 238) !important; /* 紫色 */
+        color: #B0B8C1 !important;
         line-height: 3.692307692;
         text-transform: uppercase;
         white-space: nowrap;
@@ -754,7 +755,7 @@ a:hover {
     .main-navigation .current-menu-ancestor > a,
     .main-navigation .current_page_item > a,
     .main-navigation .current_page_ancestor > a {
-        color: rgb(106, 176, 76) !important; /* 当前选中项为金色 */
+        color: #FF6AC1 !important;
         font-weight: bold;
     }
 }
@@ -871,31 +872,28 @@ footer[role="contentinfo"] a:hover {
 }
 
 .entry-header {
-    margin-bottom: 24px;
     margin-bottom: 1.714285714rem;
 }
 
 .entry-header img.wp-post-image {
-    margin-bottom: 24px;
     margin-bottom: 1.714285714rem;
 }
 
 .entry-header .entry-title {
-    font-size: 20px;
     font-size: 1.428571429rem;
     line-height: 1.2;
     font-weight: normal;
-    color: rgb(106, 176, 76); /* 修改为金色 */
+    color: #00F9FF;
 }
 
 .entry-header .entry-title a {
     text-decoration: none;
-    color: rgb(106, 176, 76); /* 修改为金色 */
+    color: #00F9FF;
     transition: color 0.3s ease;
 }
 
 .entry-header .entry-title a:hover {
-    color: #2196f3; /* 悬停时变为蓝色 */
+    color: #FFB86C;
 }
 
 .entry-header .entry-format {
@@ -1867,8 +1865,8 @@ img#wpstats {
     }
 
     .main-navigation li ul li a {
-        background: #efefef;
-        border-bottom: 1px solid #ededed;
+        background: rgb(50, 50, 50, 0.7);
+        border-bottom: 1px solid rgb(0, 0, 0, 0.5);
         display: block;
         font-size: 11px;
         font-size: 0.785714286rem;
@@ -1882,7 +1880,7 @@ img#wpstats {
 
     .main-navigation li ul li a:hover,
     .main-navigation li ul li a:focus {
-        background: #e3e3e3;
+        background: rgb(150, 150, 150, 0.7);
         color: #444;
     }
 
