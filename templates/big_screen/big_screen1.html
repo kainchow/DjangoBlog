@@ -23,7 +23,7 @@ $(document).ready(function(){
 });
 </script>
 
-<script type="text/javascript" src="{% static 'big_screen/js/echarts.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'big_screen/js/echarts5.6.0.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'big_screen/js/china.js' %}"></script>
 
 <body>
@@ -41,7 +41,7 @@ $(document).ready(function(){
     </div>
     <h1 class="h11">{{big_screen_data.title}}</h1>
 {#    <h1 class="h22">{{title}}</h1>#}
-    <div class="weather">
+    <div class="show_time_area">
 {#        <img src="/static/picture/weather.png" alt="天气图标">#}
 {#        <span>多云转小雨</span>#}
         <span id="showTime"></span>
@@ -185,7 +185,7 @@ $(function echarts_1() {
                     splitNumber: 15,
                     textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
                 },
         }],
@@ -196,7 +196,7 @@ $(function echarts_1() {
                 show:true,
                  textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
             },
             axisTick: {
@@ -206,7 +206,7 @@ $(function echarts_1() {
                 show: true,
                 lineStyle: {
                     color: "rgba(255,255,255,.1	)",
-                    width: 1,
+                    width: '0.0143rem',
                     type: "solid"
                 },
             },
@@ -225,7 +225,7 @@ $(function echarts_1() {
             itemStyle: {
                 normal: {
                     color:'#2f89cf',
-                    opacity: 1,
+                    opacity: '0.0143rem',
                     barBorderRadius: 5,
                 }
             }
@@ -257,7 +257,7 @@ $(function echarts_1() {
         },
         grid: {
             left: '0%',
-            top:'10px',
+            top: 10,
             right: '0%',
             bottom: '4%',
            containLabel: true
@@ -269,7 +269,7 @@ $(function echarts_1() {
                 show: true,
              lineStyle: {
                     color: "rgba(255,255,255,.1)",
-                    width: 1,
+                    width: '0.0143rem',
                     type: "solid"
                 },
             },
@@ -284,7 +284,7 @@ $(function echarts_1() {
                     splitNumber: 15,
                     textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
                 },
         }],
@@ -295,7 +295,7 @@ $(function echarts_1() {
                 show:true,
                  textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
             },
             axisTick: {
@@ -305,7 +305,7 @@ $(function echarts_1() {
                 show: true,
                 lineStyle: {
                     color: "rgba(255,255,255,.1	)",
-                    width: 1,
+                    width: '0.0143rem',
                     type: "solid"
                 },
             },
@@ -354,7 +354,7 @@ $(function echarts_31() {
         left: 'center',
         textStyle: {
             color: '#fff',
-			fontSize:'14'
+			fontSize: '.2rem'
         }
     }],
     tooltip: {
@@ -371,19 +371,19 @@ $(function echarts_31() {
         data:{{big_screen_data.echarts3_1.xAxis|safe}},
         textStyle: {
             color: 'rgba(255,255,255,.5)',
-            fontSize:'12',
+            fontSize: '0.17143rem',
         }
     },
     series: [
         {
-        	name:'{{big_screen_data.echarts3_1.title}}',
-            type:'pie',
+        	name: '{{big_screen_data.echarts3_1.title}}',
+            type: 'pie',
 			center: ['50%', '42%'],
             radius: ['40%', '60%'],
                   color: ['#065aab', '#066eab', '#0682ab', '#0696ab', '#06a0ab','#06b4ab','#06c8ab','#06dcab','#06f0ab'],
             label: {show:false},
 			labelLine: {show:false},
-            data:{{big_screen_data.echarts3_1.data|safe}}
+            data: {{big_screen_data.echarts3_1.data|safe}}
         }
     ]
 };
@@ -407,7 +407,7 @@ $(function echarts_32() {
         left: 'center',
         textStyle: {
             color: '#fff',
-			fontSize:'14'
+			fontSize: '.2rem'
         }
 
     }],
@@ -419,25 +419,25 @@ $(function echarts_32() {
         }
     },
     legend: {
-        top:'70%',
+        top: '70%',
         itemWidth: 10,
         itemHeight: 10,
-        data:{{big_screen_data.echarts3_2.xAxis|safe}},
+        data: {{big_screen_data.echarts3_2.xAxis|safe}},
         textStyle: {
         color: 'rgba(255,255,255,.5)',
-		fontSize:'12',
+		fontSize: '0.17143rem',
         }
     },
     series: [
         {
-        	name:'{{big_screen_data.echarts3_2.title}}',
-            type:'pie',
+        	name: '{{big_screen_data.echarts3_2.title}}',
+            type: 'pie',
 			center: ['50%', '42%'],
             radius: ['40%', '60%'],
             color: ['#065aab', '#066eab', '#0682ab', '#0696ab', '#06a0ab','#06b4ab','#06c8ab','#06dcab','#06f0ab'],
             label: {show:false},
 			labelLine: {show:false},
-            data:{{big_screen_data.echarts3_2.data|safe}}
+            data: {{big_screen_data.echarts3_2.data|safe}}
         }
     ]
 };
@@ -462,7 +462,7 @@ $(function echarts_33() {
         left: 'center',
         textStyle: {
             color: '#fff',
-            fontSize:'14'
+            fontSize: '.2rem'
         }
     }],
     tooltip: {
@@ -473,25 +473,25 @@ $(function echarts_33() {
         }
     },
     legend: {
-    top:'70%',
-        itemWidth: 10,
-        itemHeight: 10,
-        data:{{big_screen_data.echarts3_3.xAxis|safe}},
-        textStyle: {
-            color: 'rgba(255,255,255,.5)',
-			fontSize:'12',
-        }
-    },
+            top: '70%',
+            itemWidth: 10,
+            itemHeight: 10,
+            data: {{big_screen_data.echarts3_3.xAxis|safe}},
+            textStyle: {
+                color: 'rgba(255,255,255,.5)',
+                fontSize: '0.17143rem',
+            }
+        },
     series: [
         {
-        	name:'{{big_screen_data.echarts3_3.title}}',
-            type:'pie',
+        	name: '{{big_screen_data.echarts3_3.title}}',
+            type: 'pie',
 			center: ['50%', '42%'],
             radius: ['40%', '60%'],
             color: ['#065aab', '#066eab', '#0682ab', '#0696ab', '#06a0ab','#06b4ab','#06c8ab','#06dcab','#06f0ab'],
             label: {show:false},
 			labelLine: {show:false},
-            data:{{big_screen_data.echarts3_3.data|safe}}
+            data: {{big_screen_data.echarts3_3.data|safe}}
         }
     ]
 };
@@ -527,7 +527,7 @@ $(function echarts_4() {
         data:{{big_screen_data.echart4.names|safe}},
         textStyle: {
             color: 'rgba(255,255,255,.5)',
-            fontSize:'12',
+            fontSize: '0.17143rem',
         }
     },
     grid: {
@@ -543,7 +543,7 @@ $(function echarts_4() {
         axisLabel:  {
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize:12,
+                fontSize: '0.17143rem',
             },
         },
         axisLine: {
@@ -569,7 +569,7 @@ $(function echarts_4() {
         axisLabel:  {
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize:12,
+                fontSize: '0.17143rem',
             },
         },
         splitLine: {
@@ -609,7 +609,7 @@ $(function echarts_4() {
 			normal: {
 				color: '#0184d5',
 				borderColor: 'rgba(221, 220, 107, .1)',
-				borderWidth: 12
+				borderWidth: '0.17143rem'
 			}
 		},
     },
@@ -643,7 +643,7 @@ $(function echarts_4() {
 			normal: {
 				color: '#00d887',
 				borderColor: 'rgba(221, 220, 107, .1)',
-				borderWidth: 12
+				borderWidth: '0.17143rem'
 			}
 		},
     },
@@ -699,7 +699,7 @@ $(function echarts_5() {
             splitNumber: 15,
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize: '12',
+                fontSize: '0.17143rem',
             },
         },
     }],
@@ -710,7 +710,7 @@ $(function echarts_5() {
             show:true,
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize: '12',
+                fontSize: '0.17143rem',
             },
         },
         axisTick: {
@@ -791,7 +791,7 @@ option = {
 	legend: {
 		itemWidth: 10,
         itemHeight: 10,
-		itemGap: 12,
+		itemGap: 10,
 		bottom: '3%',
 		data: {{big_screen_data.echart6.xAxis|safe}},
 		textStyle: {

@@ -23,7 +23,7 @@ $(document).ready(function(){
 });
 </script>
 
-<script type="text/javascript" src="{% static 'big_screen/js/echarts.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'big_screen/js/echarts5.6.0.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'big_screen/js/china.js' %}"></script>
 
 <body>
@@ -37,11 +37,18 @@ $(document).ready(function(){
         </a>
     </div>
     <h1 class="h11">{{big_screen_data.title}}</h1>
-{#    <h1 class="h22">{{title}}</h1>#}
-    <div class="weather">
-{#        <img src="/static/picture/weather.png" alt="天气图标">#}
-{#        <span>多云转小雨</span>#}
-        <span id="showTime"></span>
+    <div class="show_time_area">
+        <div class="show_time">
+            <span id="showTime"></span>
+        </div>
+        <div class="show_date_week">
+            <div class="show_date">
+                <span id="showDate"></span>
+            </div>
+            <div class="show_week">
+                <span id="showWeek"></span>
+            </div>
+        </div>
     </div>
 </div>
 <div class="mainbox">
@@ -134,7 +141,13 @@ $(document).ready(function(){
         if (s.toString().length === 1) {
             s = "0" + s
         }
-        document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "日" + "-" + h + "时" + m + "分" + s + "秒";
+        // 获取星期几
+        const weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        const week = weekdays[dt.getDay()];
+
+        document.getElementById("showTime").innerHTML = h + ":" + m + ":" + s;
+        document.getElementById("showDate").innerHTML = y + "-" + mt + "-" + day;
+        document.getElementById("showWeek").innerHTML = week;
         t = setTimeout(time, 1000); //设定定时器，循环运行
     }
 </script>
@@ -182,7 +195,7 @@ $(function echarts_1() {
                     splitNumber: 15,
                     textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
                 },
         }],
@@ -193,7 +206,7 @@ $(function echarts_1() {
                 show:true,
                  textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
             },
             axisTick: {
@@ -281,7 +294,7 @@ $(function echarts_1() {
                     splitNumber: 15,
                     textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
                 },
         }],
@@ -292,7 +305,7 @@ $(function echarts_1() {
                 show:true,
                  textStyle: {
                         color: "rgba(255,255,255,.6)",
-                        fontSize: '12',
+                        fontSize: '0.17143rem',
                     },
             },
             axisTick: {
@@ -351,7 +364,7 @@ $(function echarts_31() {
         left: 'center',
         textStyle: {
             color: '#fff',
-			fontSize:'14'
+			fontSize: '.2rem'
         }
     }],
     tooltip: {
@@ -368,7 +381,7 @@ $(function echarts_31() {
         data:{{big_screen_data.echarts3_1.xAxis|safe}},
         textStyle: {
             color: 'rgba(255,255,255,.5)',
-            fontSize:'12',
+            fontSize: '0.17143rem',
         }
     },
     series: [
@@ -404,7 +417,7 @@ $(function echarts_32() {
         left: 'center',
         textStyle: {
             color: '#fff',
-			fontSize:'14'
+			fontSize: '.2rem'
         }
 
     }],
@@ -422,7 +435,7 @@ $(function echarts_32() {
         data:{{big_screen_data.echarts3_2.xAxis|safe}},
         textStyle: {
         color: 'rgba(255,255,255,.5)',
-		fontSize:'12',
+		fontSize: '0.17143rem',
         }
     },
     series: [
@@ -459,7 +472,7 @@ $(function echarts_33() {
         left: 'center',
         textStyle: {
             color: '#fff',
-            fontSize:'14'
+            fontSize: '.2rem'
         }
     }],
     tooltip: {
@@ -476,7 +489,7 @@ $(function echarts_33() {
         data:{{big_screen_data.echarts3_3.xAxis|safe}},
         textStyle: {
             color: 'rgba(255,255,255,.5)',
-			fontSize:'12',
+			fontSize: '0.17143rem',
         }
     },
     series: [
@@ -524,7 +537,7 @@ $(function echarts_4() {
         data:{{big_screen_data.echart4.names|safe}},
         textStyle: {
             color: 'rgba(255,255,255,.5)',
-            fontSize:'12',
+            fontSize: '0.17143rem',
         }
     },
     grid: {
@@ -540,7 +553,7 @@ $(function echarts_4() {
         axisLabel:  {
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize:12,
+                fontSize: '0.17143rem',
             },
         },
         axisLine: {
@@ -566,7 +579,7 @@ $(function echarts_4() {
         axisLabel:  {
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize:12,
+                fontSize: '0.17143rem',
             },
         },
         splitLine: {
@@ -696,7 +709,7 @@ $(function echarts_5() {
             splitNumber: 15,
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize: '12',
+                fontSize: '0.17143rem',
             },
         },
     }],
@@ -707,7 +720,7 @@ $(function echarts_5() {
             show:true,
             textStyle: {
                 color: "rgba(255,255,255,.6)",
-                fontSize: '12',
+                fontSize: '0.17143rem',
             },
         },
         axisTick: {
