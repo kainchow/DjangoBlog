@@ -1,9 +1,10 @@
 {% extends 'share_layout/base_account.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
     <div class="container">
 
-        <h2 class="form-signin-heading text-center">Create Your Account</h2>
+        <h2 class="form-signin-heading text-center">{% trans 'Create Your Account' %}</h2>
 
         <div class="card card-signin">
             <img class="img-circle profile-img" src="{% static 'blog/img/avatar.png' %}" alt="">
@@ -16,13 +17,13 @@
                 {% endfor %}
 
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Create Your Account</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Create Your Account' %}</button>
 
             </form>
         </div>
 
         <p class="text-center login-footer-links">
-            <a href="{% url "account:login" %}">Sign In</a>
+            <a href="{% url "account:login" %}">{% trans 'Sign In' %}</a>
         </p>
 
     </div> <!-- /container -->

@@ -4,7 +4,7 @@
 {% block content %}
     <div class="container">
 
-        <h2 class="form-signin-heading text-center">Sign in with your Account</h2>
+        <h2 class="form-signin-heading text-center">{% trans 'Sign in with your Account' %}</h2>
 
         <div class="card card-signin">
             <img class="img-circle profile-img" src="{% static 'blog/img/avatar.png' %}" alt="">
@@ -17,12 +17,12 @@
                 {% endfor %}
 
                 <input type="hidden" name="next" value="{{ redirect_to }}">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Sign In' %}</button>
 
                 <div class="custom-checkbox">
                     {% comment %}<a class="pull-right">Need help?</a>{% endcomment %}
                     <label>
-                        <input type="checkbox" value="remember-me" name="remember"> Stay signed in
+                        <input type="checkbox" value="remember-me" name="remember">{% trans 'Stay signed in' %}
                     </label>
                 </div>
                 {% load oauth_tags %}
@@ -35,7 +35,7 @@
                 {% trans 'Create Account' %}
             </a>
             |
-            <a href="/">Home Page</a>
+            <a href="/">{% trans 'Home Page' %}</a>
             |
             <a href="{% url "account:forget_password" %}">
                 {% trans 'Forget Password' %}
