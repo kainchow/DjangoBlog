@@ -1,4 +1,5 @@
 import logging
+import os
 # Create your views here.
 from urllib.parse import urlparse
 
@@ -11,6 +12,7 @@ from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.templatetags.static import static
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -79,11 +81,16 @@ def authorize(request):
     user = manager.get_oauth_userinfo()
     logger.info(f"已登录: {user.nickname}")
     if user:
+        is_avatar_not_exist = True
         if not user.nickname or not user.nickname.strip():
             user.nickname = "djangoblog" + timezone.now().strftime('%y%m%d%I%M%S')
         try:
             temp = OAuthUser.objects.get(type=oauth_type, openid=user.openid)
-            temp.picture = user.picture
+            if static('avatar/') in temp.picture and os.path.exists(temp.picture[1:]) \
+                    and temp.picture != static('blog/img/avatar.png'):
+                is_avatar_not_exist = False
+            else:
+                temp.picture = user.picture
             temp.metadata = user.metadata
             temp.nickname = user.nickname
             user = temp
@@ -97,6 +104,9 @@ def authorize(request):
                 author = None
                 try:
                     author = get_user_model().objects.get(id=user.author_id)
+                    if author.username != user.nickname:
+                        author.username = user.nickname  # 如果用户名更换了，User表也做同步更换
+                        author.save()
                 except ObjectDoesNotExist:
                     pass
                 if not author:
@@ -115,8 +125,11 @@ def authorize(request):
                 user.author = author
                 user.save()
 
-                oauth_user_login_signal.send(
-                    sender=authorize.__class__, id=user.id)
+                # 保存用户头像
+                if is_avatar_not_exist:
+                    oauth_user_login_signal.send(
+                        sender=authorize.__class__, id=user.id
+                    )
                 login(request, author)
                 logger.info(f"已登录: {request.user.is_authenticated}, {request.user.username}")
                 return HttpResponseRedirect(next_url)

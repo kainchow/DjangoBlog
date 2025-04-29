@@ -19,13 +19,14 @@ class OAuthAccessTokenException(Exception):
 
 
 class BaseOauthManager(metaclass=ABCMeta):
-    """获取用户授权"""
+    """Oauth管理基类"""
+    # 获取用户授权
     AUTH_URL = None
-    """获取token"""
+    # 获取token
     TOKEN_URL = None
-    """获取用户信息"""
+    # 获取用户信息
     API_URL = None
-    '''icon图标名'''
+    # icon图标名
     ICON_NAME = None
 
     def __init__(self, access_token=None, openid=None):
@@ -125,16 +126,16 @@ class WBOauthManager(BaseOauthManager):
         }
         rsp = self.do_get(self.API_URL, params)
         try:
-            datas = json.loads(rsp)
+            data = json.loads(rsp)
             user = OAuthUser()
             user.metadata = rsp
-            user.picture = datas['avatar_large']
-            user.nickname = datas['screen_name']
-            user.openid = datas['id']
+            user.picture = data['avatar_large']
+            user.nickname = data['screen_name']
+            user.openid = data['id']
             user.type = 'weibo'
             user.token = self.access_token
-            if 'email' in datas and datas['email']:
-                user.email = datas['email']
+            if 'email' in data and data['email']:
+                user.email = data['email']
             return user
         except Exception as e:
             logger.error(e)
@@ -142,8 +143,8 @@ class WBOauthManager(BaseOauthManager):
             return None
 
     def get_picture(self, metadata):
-        datas = json.loads(metadata)
-        return datas['avatar_large']
+        data = json.loads(metadata)
+        return data['avatar_large']
 
 
 class ProxyManagerMixin:
@@ -224,16 +225,16 @@ class GoogleOauthManager(ProxyManagerMixin, BaseOauthManager):
         rsp = self.do_get(self.API_URL, params)
         try:
 
-            datas = json.loads(rsp)
+            data = json.loads(rsp)
             user = OAuthUser()
             user.metadata = rsp
-            user.picture = datas['picture']
-            user.nickname = datas['name']
-            user.openid = datas['sub']
+            user.picture = data['picture']
+            user.nickname = data['name']
+            user.openid = data['sub']
             user.token = self.access_token
             user.type = 'google'
-            if datas['email']:
-                user.email = datas['email']
+            if data['email']:
+                user.email = data['email']
             return user
         except Exception as e:
             logger.error(e)
@@ -241,8 +242,8 @@ class GoogleOauthManager(ProxyManagerMixin, BaseOauthManager):
             return None
 
     def get_picture(self, metadata):
-        datas = json.loads(metadata)
-        return datas['picture']
+        data = json.loads(metadata)
+        return data['picture']
 
 
 class GitHubOauthManager(ProxyManagerMixin, BaseOauthManager):
@@ -285,14 +286,14 @@ class GitHubOauthManager(ProxyManagerMixin, BaseOauthManager):
 
             'redirect_uri': self.callback_url
         }
-        logger.info('get_access_token_by_code: ' + str(params))
+        # logger.info('get_access_token_by_code: ' + str(params))
         rsp = self.do_post(self.TOKEN_URL, params)
 
         from urllib import parse
         r = parse.parse_qs(rsp)
         if 'access_token' in r:
             self.access_token = (r['access_token'][0])
-            logger.info('access_token: ' + self.access_token)
+            # logger.info('access_token: ' + self.access_token)
             return self.access_token
         else:
             raise OAuthAccessTokenException(rsp)
@@ -303,16 +304,18 @@ class GitHubOauthManager(ProxyManagerMixin, BaseOauthManager):
             "Authorization": "token " + self.access_token
         })
         try:
-            datas = json.loads(rsp)
+            data = json.loads(rsp)
             user = OAuthUser()
-            user.picture = datas['avatar_url']
-            user.nickname = datas['name']
-            user.openid = datas['id']
+            user.picture = data['avatar_url']
+            user.nickname = data['name']
+            if data['name'] is None or data['name'] == 'None' or data['name'] == '':
+                user.nickname = data['login']
+            user.openid = data['id']
             user.type = 'github'
             user.token = self.access_token
             user.metadata = rsp
-            if 'email' in datas and datas['email']:
-                user.email = datas['email']
+            if 'email' in data and data['email']:
+                user.email = data['email']
             return user
         except Exception as e:
             logger.error(e)
@@ -320,8 +323,8 @@ class GitHubOauthManager(ProxyManagerMixin, BaseOauthManager):
             return None
 
     def get_picture(self, metadata):
-        datas = json.loads(metadata)
-        return datas['avatar_url']
+        data = json.loads(metadata)
+        return data['avatar_url']
 
 
 class FaceBookOauthManager(ProxyManagerMixin, BaseOauthManager):
@@ -377,25 +380,25 @@ class FaceBookOauthManager(ProxyManagerMixin, BaseOauthManager):
         }
         try:
             rsp = self.do_get(self.API_URL, params)
-            datas = json.loads(rsp)
+            data = json.loads(rsp)
             user = OAuthUser()
-            user.nickname = datas['name']
-            user.openid = datas['id']
+            user.nickname = data['name']
+            user.openid = data['id']
             user.type = 'facebook'
             user.token = self.access_token
             user.metadata = rsp
-            if 'email' in datas and datas['email']:
-                user.email = datas['email']
-            if 'picture' in datas and datas['picture'] and datas['picture']['data'] and datas['picture']['data']['url']:
-                user.picture = str(datas['picture']['data']['url'])
+            if 'email' in data and data['email']:
+                user.email = data['email']
+            if 'picture' in data and data['picture'] and data['picture']['data'] and data['picture']['data']['url']:
+                user.picture = str(data['picture']['data']['url'])
             return user
         except Exception as e:
             logger.error(e)
             return None
 
     def get_picture(self, metadata):
-        datas = json.loads(metadata)
-        return str(datas['picture']['data']['url'])
+        data = json.loads(metadata)
+        return str(data['picture']['data']['url'])
 
 
 class QQOauthManager(BaseOauthManager):
@@ -483,8 +486,8 @@ class QQOauthManager(BaseOauthManager):
             return user
 
     def get_picture(self, metadata):
-        datas = json.loads(metadata)
-        return str(datas['figureurl'])
+        data = json.loads(metadata)
+        return str(data['figureurl'])
 
 
 @cache_decorator(expiration=100 * 60)
@@ -498,12 +501,12 @@ def get_oauth_apps():
     return apps
 
 
-def get_manager_by_type(type):
+def get_manager_by_type(oauth_type):
     applications = get_oauth_apps()
     if applications:
         finds = list(
             filter(
-                lambda x: x.ICON_NAME.lower() == type.lower(),
+                lambda x: x.ICON_NAME.lower() == oauth_type.lower(),
                 applications))
         if finds:
             return finds[0]
