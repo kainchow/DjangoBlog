@@ -75,4 +75,8 @@ urlpatterns = [
         'bigscreen3/',
         views.BigScreen3View.as_view(),
         name='big_screen3'),
+    path(
+        'bigscreen4/',
+        views.BigScreen4View.as_view(),
+        name='big_screen4'),
 ]

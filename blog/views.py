@@ -15,7 +15,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from haystack.views import SearchView
 
-from blog.data import SourceData, CorpData, JobData
+from blog.data import SourceData, CorpData, ProductData, USAPopulationData
 from blog.models import Article, Category, LinkShowType, Links, Tag
 from comments.forms import CommentForm
 from djangoblog.utils import cache, get_blog_setting, get_sha256
@@ -311,7 +311,8 @@ class BigScreenView(ListView):
         result = {
             'big_screen1_title': BigScreen1View().get_queryset().title,
             'big_screen2_title': BigScreen2View().get_queryset().title,
-            'big_screen3_title': BigScreen3View().get_queryset().title
+            'big_screen3_title': BigScreen3View().get_queryset().title,
+            'big_screen4_title': BigScreen4View().get_queryset().title
         }
         return result
 
@@ -337,7 +338,16 @@ class BigScreen2View(ListView):
 class BigScreen3View(ListView):
     template_name = "big_screen/big_screen3.html"
     context_object_name = "big_screen_data"
-    data = JobData()
+    data = ProductData()
+
+    def get_queryset(self):
+        return self.data
+
+
+class BigScreen4View(ListView):
+    template_name = "big_screen/big_screen4.html"
+    context_object_name = "big_screen_data"
+    data = USAPopulationData()
 
     def get_queryset(self):
         return self.data

@@ -238,14 +238,47 @@ class CorpData(SourceDataDemo):
         self.map_1_data = data.get('map_1_data')
 
 
-class JobData(SourceDataDemo):
+class ProductData(SourceDataDemo):
 
     def __init__(self):
         """
         按照 SourceDataDemo 的格式覆盖数据即可
         """
         super().__init__()
-        with open('blog/job.json', 'r', encoding='utf-8') as f:
+        with open('blog/product.json', 'r', encoding='utf-8') as f:
+            data = json.loads(f.read())
+        self.title = data.get('title')
+        self.counter = data.get('counter')
+        self.counter2 = data.get('counter2')
+        self.echart1_data = data.get('echart1_data')
+        self.echart2_data = data.get('echart2_data')
+        self.echarts3_1_data = data.get('echarts3_1_data')
+        self.echarts3_2_data = data.get('echarts3_2_data')
+        self.echarts3_3_data = data.get('echarts3_3_data')
+        self.echart4_data = data.get('echart4_data')
+        self.echart5_data = data.get('echart5_data')
+        self.echart6_data = data.get('echart6_data')
+        self.map_1_data = data.get('map_1_data')
+
+    def echart1(self):
+        data = self.echart1_data
+        echart = {
+            'title': data.get('title'),
+            'names': [i.get("name") for i in data.get('data')],
+            'xAxis': data.get('xAxis'),
+            'data': data.get('data'),
+        }
+        return echart
+
+
+class USAPopulationData(SourceDataDemo):
+
+    def __init__(self):
+        """
+        按照 SourceDataDemo 的格式覆盖数据即可
+        """
+        super().__init__()
+        with open('blog/usa_population.json', 'r', encoding='utf-8') as f:
             data = json.loads(f.read())
         self.title = data.get('title')
         self.counter = data.get('counter')

@@ -1,26 +1,26 @@
 {% load static %}
 <!doctype html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <title>{{big_screen_data.title}}</title>
     <script type="text/javascript" src="{% static 'big_screen/js/jquery.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'big_screen/css/big_screen3.css' %}">
+    <link rel="stylesheet" href="{% static 'big_screen/css/big_screen4.css' %}">
 </head>
 <script>
-	$(window).load(function(){
-             $(".loading").fadeOut()
-            })
+	$(window).load(function () {
+        $(".loading").fadeOut()
+    })
 
-/****/
-$(document).ready(function(){
-    var whei=$(window).width()
-	$("html").css({fontSize:whei/20})
-	$(window).resize(function(){
-	    var whei=$(window).width()
-        $("html").css({fontSize:whei/20})
-	});
-});
+    /****/
+    $(document).ready(function () {
+        var whei = $(window).width()
+        $("html").css({fontSize: whei / 20})
+        $(window).resize(function () {
+            var whei = $(window).width()
+            $("html").css({fontSize: whei / 20})
+        });
+    });
 </script>
 
 <script type="text/javascript" src="{% static 'big_screen/js/echarts5.6.0.min.js' %}"></script>
@@ -33,7 +33,7 @@ $(document).ready(function(){
 <div class="head">
     <div class="back-home">
         <a href="{% url 'blog:big_screen' %}">
-            <img src="{% static 'big_screen/img/back.png' %}" style="width: 0.4rem; height: 0.4rem; margin-top: 0.2rem;">
+            <img src="{% static 'big_screen/img/back.png' %}" style="width: 0.4rem; height: 0.4rem; margin-top: 0.2rem;" alt="返回">
         </a>
     </div>
     <h1 class="h11">{{big_screen_data.title}}</h1>
@@ -54,17 +54,17 @@ $(document).ready(function(){
 <div class="mainbox">
     <ul class="clearfix">
         <li>
-            <div class="boxall" style="height: 4rem">
+            <div class="boxall" style="height: 3.2rem">
                 <div class="alltitle">{{big_screen_data.echart1.title}}</div>
                 <div class="allnav" id="echart1"></div>
                 <div class="boxfoot"></div>
             </div>
-            <div class="boxall" style="height: 2.8rem">
+            <div class="boxall" style="height: 3.2rem">
                 <div class="alltitle">{{big_screen_data.echart2.title}}</div>
                 <div class="allnav" id="echart2"></div>
                 <div class="boxfoot"></div>
             </div>
-            <div class="boxall" style="height: 2.8rem">
+            <div class="boxall" style="height: 3.2rem">
                 <div style="height: 100%; width: 100%;">
                     <div class="sy" id="fb1"></div>
                     <div class="sy" id="fb2"></div>
@@ -88,9 +88,8 @@ $(document).ready(function(){
                     </ul>
                 </div>
             </div>
-            <div class="boxall">
-                <div class="map" id="map_1"></div>
-                <div class="boxfoot"></div>
+            <div class="map">
+{#                <div class="map4" id="map_1"></div>
             </div>
         </li>
         <li>
@@ -140,11 +139,11 @@ $(document).ready(function(){
             s = "0" + s
         }
         // 获取星期几
-        const weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const week = weekdays[dt.getDay()];
 
         document.getElementById("showTime").innerHTML = h + ":" + m + ":" + s;
-        document.getElementById("showDate").innerHTML = y + "-" + mt + "-" + day;
+        document.getElementById("showDate").innerHTML = mt + "/" + day + "/" + y;
         document.getElementById("showWeek").innerHTML = week;
         t = setTimeout(time, 1000); //设定定时器，循环运行
     }
@@ -152,108 +151,102 @@ $(document).ready(function(){
 
 <!--echart1-->
 <script>
-    $(function echarts_1() {
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echart1'));
-        option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    lineStyle: {
-                        color: '#dddc6b'
-                    }
-                }
-            },
-            legend: {
-                top: '0%',
-                right: '0%',
-                data: {{big_screen_data.echart1.names|safe}},
-                textStyle: {
-                    color: 'rgba(255,255,255,.9)',
-                    fontSize: '0.17143rem',
+$(function echarts_1() {
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echart1'));
+
+    option = {
+        //  backgroundColor: '#00265f',
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: {
+            left: '0%',
+            top:'10px',
+            right: '0%',
+            bottom: '4%',
+           containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+                data: {{big_screen_data.echart1.xAxis|safe}},
+            axisLine: {
+                show: true,
+             lineStyle: {
+                    color: "rgba(255,255,255,.1)",
+                    width: 1,
+                    type: "solid"
                 },
-                itemWidth: 10,         // 图例图标宽度（圆的直径）
-                itemHeight: 10,        // 图例图标高度
-                itemGap: 10,           // 图例项之间的间距
-                icon: 'circle',        // 将图例图标改为圆形
             },
-            grid: {
-                left: '10',
-                top: '30',
-                right: '10',
-                bottom: '10',
-                containLabel: true
+
+            axisTick: {
+                show: false,
             },
-            xAxis: [{
-                type: 'category',
-                boundaryGap: false,
-                axisLabel: {
+            axisLabel:  {
+                    interval: 0,
+                    rotate:45,
+                    show: true,
+                    splitNumber: 15,
                     textStyle: {
                         color: "rgba(255,255,255,.6)",
                         fontSize: '0.17143rem',
                     },
                 },
-                axisLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,.2)'
-                    }
-                },
-                data: {{big_screen_data.echart1.xAxis|safe}}
-            }, {
-                axisPointer: {show: false},
-                axisLine: {show: false},
-                position: 'bottom',
-                offset: 20,
-            }],
-            yAxis: [{
-                type: 'value',
-                axisTick: {show: true},
-                axisLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,.1)'
-                    }
-                },
-                axisLabel: {
-                    textStyle: {
+        }],
+        yAxis: [{
+            type: 'value',
+            axisLabel: {
+               //formatter: '{value} %'
+                show:true,
+                 textStyle: {
                         color: "rgba(255,255,255,.6)",
                         fontSize: '0.17143rem',
                     },
+            },
+            axisTick: {
+                show: false,
+            },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: "rgba(255,255,255,.1	)",
+                    width: 1,
+                    type: "solid"
                 },
-                splitLine: {
-                    lineStyle: {
-                        color: 'rgba(255,255,255,.1)'
-                    }
+            },
+            splitLine: {
+                lineStyle: {
+                   color: "rgba(255,255,255,.1)",
                 }
-            }],
-            series: [
-                {
-                    name: '{{big_screen_data.echart1.data.0.name}}',
-                    data: {{big_screen_data.echart1.data.0.value|safe}},
-                    type: 'line',
-                    smooth: true,
-                    symbolSize: 6,
-                    lineStyle: {
-                        normal: {
-                            color: '#750D0D',
-                            width: 2
-                        }
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#750D0D',
-                            borderColor: 'rgba(221, 220, 107, .1)',
-                            borderWidth: 12
-                        }
-                    },
-                },
-            ]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        window.addEventListener("resize", function () {
-            myChart.resize();
-        });
-    })
+            }
+        }],
+        series: [
+            {
+            type: 'bar',
+            data: {{big_screen_data.echart1.series|safe}},
+            barWidth:'35%', //柱子宽度
+           // barGap: 1, //柱子之间间距
+            itemStyle: {
+                normal: {
+                    color:'#C766FF',
+                    opacity: 1,
+                    barBorderRadius: 5,
+                }
+            }
+        }
+
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener("resize",function(){
+        myChart.resize();
+    });
+})
 </script>
 
 <!--echart2-->
@@ -292,7 +285,7 @@ $(document).ready(function(){
             },
             axisLabel:  {
                     interval: 0,
-                   // rotate:50,
+                    rotate:45,
                     show: true,
                     splitNumber: 15,
                     textStyle: {
@@ -337,7 +330,7 @@ $(document).ready(function(){
            // barGap: 1, //柱子之间间距
             itemStyle: {
                 normal: {
-                    color:'#750D0D',
+                    color:'#C766FF',
                     opacity: 1,
                     barBorderRadius: 5,
                 }
@@ -353,9 +346,8 @@ $(document).ready(function(){
         myChart.resize();
     });
 })
-
-
 </script>
+
 <!--echarts3_1-->
 <script>
 $(function echarts_31() {
@@ -389,11 +381,11 @@ $(function echarts_31() {
     },
     series: [
         {
-        	name:'{{big_screen_data.echarts3_1.title}}',
+            name:'{{big_screen_data.echarts3_1.title}}',
             type:'pie',
 			center: ['50%', '42%'],
             radius: ['40%', '60%'],
-                  color: ['#FDECEC', '#F9BABA', '#F68A8A', '#F25A5A', '#EE2A2A', '#D62020', '#B41818', '#931212', '#750D0D'],
+            color: ['#6366FF', '#8566FF', '#A766FF', '#C066FF', '#C766FF'],
             label: {show:false},
 			labelLine: {show:false},
             data:{{big_screen_data.echarts3_1.data|safe}}
@@ -406,9 +398,8 @@ $(function echarts_31() {
         myChart.resize();
     });
 })
-
-
 </script>
+
 <!--echarts3_2-->
 <script>
 $(function echarts_32() {
@@ -447,7 +438,7 @@ $(function echarts_32() {
             type:'pie',
 			center: ['50%', '42%'],
             radius: ['40%', '60%'],
-            color: ['#FDECEC', '#F9BABA', '#F68A8A', '#F25A5A', '#EE2A2A', '#D62020', '#B41818', '#931212', '#750D0D'],
+            color: ['#6366FF', '#8566FF', '#A766FF', '#C066FF', '#C766FF'],
             label: {show:false},
 			labelLine: {show:false},
             data:{{big_screen_data.echarts3_2.data|safe}}
@@ -461,9 +452,8 @@ window.addEventListener("resize",function(){
     myChart.resize();
 });
 })
-
-
 </script>
+
 <!--echarts3_3-->
 <script>
 $(function echarts_33() {
@@ -501,7 +491,7 @@ $(function echarts_33() {
             type:'pie',
 			center: ['50%', '42%'],
             radius: ['40%', '60%'],
-            color: ['#FDECEC', '#F9BABA', '#F68A8A', '#F25A5A', '#EE2A2A', '#D62020', '#B41818', '#931212', '#750D0D'],
+            color: ['#6366FF', '#8566FF', '#A766FF', '#C066FF', '#C766FF'],
             label: {show:false},
 			labelLine: {show:false},
             data:{{big_screen_data.echarts3_3.data|safe}}
@@ -515,12 +505,8 @@ $(function echarts_33() {
             myChart.resize();
         });
     })
-
-
-
-
-
 </script>
+
 <!--echarts4-->
 <script>
 $(function echarts_4() {
@@ -531,7 +517,7 @@ $(function echarts_4() {
         trigger: 'axis',
         axisPointer: {
             lineStyle: {
-                color: '#dddc6b'
+                color: '#4BE5EF'
             }
         }
     },
@@ -602,7 +588,7 @@ $(function echarts_4() {
         showSymbol: false,
         lineStyle: {
             normal: {
-				color: '#750D0D',
+				color: '#C766FF',
                 width: 2
             }
         },
@@ -610,17 +596,17 @@ $(function echarts_4() {
             normal: {
                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                     offset: 0,
-                    color: 'rgba(117, 13 ,13, 0.4)'
+                    color: 'rgba(199, 102, 255, 0.4)'
                 }, {
                     offset: 0.8,
-                    color: 'rgba(117, 13 ,13, 0.1)'
+                    color: 'rgba(199, 102, 255, 0.1)'
                 }], false),
                 shadowColor: 'rgba(0, 0, 0, 0.1)',
             }
         },
 			itemStyle: {
 			normal: {
-				color: '#750D0D',
+				color: '#C766FF',
 				borderColor: 'rgba(221, 220, 107, .1)',
 				borderWidth: 12
 			}
@@ -636,7 +622,7 @@ $(function echarts_4() {
         showSymbol: false,
         lineStyle: {
             normal: {
-				color: '#F68A8A',
+				color: '#6366FF',
                 width: 2
             }
         },
@@ -644,17 +630,17 @@ $(function echarts_4() {
             normal: {
                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                     offset: 0,
-                    color: 'rgba(246, 138, 138, 0.4)'
+                    color: 'rgba(99, 102, 255, 0.4)'
                 }, {
                     offset: 0.8,
-                    color: 'rgba(246, 138, 138, 0.1)'
+                    color: 'rgba(99, 102, 255, 0.1)'
                 }], false),
                 shadowColor: 'rgba(0, 0, 0, 0.1)',
             }
         },
 			itemStyle: {
 			normal: {
-				color: '#F68A8A',
+				color: '#6366FF',
 				borderColor: 'rgba(221, 220, 107, .1)',
 				borderWidth: 12
 			}
@@ -668,8 +654,8 @@ $(function echarts_4() {
         myChart.resize();
     });
 })
-
 </script>
+
 <!--echarts5-->
 <script>
 $(function echarts_5() {
@@ -707,7 +693,7 @@ $(function echarts_5() {
         },
 		axisLabel:  {
             interval: 0,
-           // rotate:50,
+            rotate:45,
             show: true,
             splitNumber: 15,
             textStyle: {
@@ -750,7 +736,7 @@ $(function echarts_5() {
        // barGap: 1, //柱子之间间距
         itemStyle: {
             normal: {
-                color:'#750D0D',
+                color:'#C766FF',
                 opacity: 1,
 				barBorderRadius: 5,
             }
@@ -765,9 +751,8 @@ $(function echarts_5() {
         myChart.resize();
     });
 })
-
-
 </script>
+
 <!--echarts6-->
 <script>
 $(function echarts_6() {
@@ -796,7 +781,7 @@ var placeHolderStyle = {
 	}
 };
 option = {
-	color: ['#FDECEC', '#F68A8A', '#EE2A2A', '#B41818', '#750D0D'],
+	color: ['#6366FF', '#8566FF', '#A766FF', '#C066FF', '#C766FF'],
 	tooltip: {
 		show: true,
 		formatter: "{a} : {c} "
@@ -841,10 +826,6 @@ window.addEventListener("resize",function(){
     myChart.resize();
 });
 })
-
-
-
-
 </script>
 
 <!--map_1-->
@@ -853,9 +834,9 @@ window.addEventListener("resize",function(){
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('map_1'));
         myChart.showLoading();
-        $.get("{% static 'big_screen/json/china_geo.json' %}", function (usaJson) {
+        $.get("{% static 'big_screen/json/usa_geo.json' %}", function (usaJson) {
             myChart.hideLoading();
-            echarts.registerMap('china', usaJson, {
+            echarts.registerMap('USA', usaJson, {
                 Alaska: {
                     left: -131,
                     top: 25,
@@ -879,25 +860,23 @@ window.addEventListener("resize",function(){
                 {#sublink: 'http://www.census.gov/popest/data/datasets.html',#}
                 {#left: 'right'#}
             },
-            tooltip: {
+            /*tooltip: {
                 trigger: 'item',
                 showDelay: 0,
-                transitionDuration: 0.2,
-                formatter: function (params) {
-                  return `${params.name}: ${params.value}`;
-                }
-            },
+                transitionDuration: 0.2
+            },*/
             visualMap: {
-                show: true,
-                left: 'left',
-                top: '25%',
+                show: false,
+                left: 'right',
                 min: 500000,
-                max: 30000000,
+                max: 38000000,
                 inRange: {
-                    color: ['#FDECEC', '#F9BABA', '#F68A8A', '#F25A5A', '#EE2A2A', '#D62020', '#B41818', '#931212', '#750D0D'],
+                    color: [
+                        '#6366FF', '#7466FF', '#8566FF', '#9666FF', '#A766FF', '#B766FF', '#C066FF', '#C566FF', '#C766FF'
+                    ]
                 },
-                text: ['高', '低'],
-                {#calculable: true#}
+                text: ['High', 'Low'],
+                calculable: true
             },
             toolbox: {
                 show: false,
@@ -912,21 +891,16 @@ window.addEventListener("resize",function(){
             },
             series: [
                 {
-                    name: 'China PopEstimates',
+                    name: 'USA PopEstimates',
                     type: 'map',
                     roam: false,
-                    map: 'china',
+                    map: 'USA',
                     emphasis: {
                         label: {
                             show: true
                         }
                     },
-                    data: {{big_screen_data.map_1.data|safe}},
-                    itemStyle: {
-                        normal: {
-                            color: '#aaeedd',
-                        }
-                    }
+                    data: {{big_screen_data.map_1.data|safe}}
                 }
             ]
         };

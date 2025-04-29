@@ -14,8 +14,8 @@
 }
 
 @font-face {
-    font-family: "Flyme Number";
-    src: url(../font/FlymeNumber-VF-8e505f62.ttf)
+    font-family: JetBrainsMono;
+    src: url(../font/JetBrainsMono-Medium.ttf)
 }
 
 body {
@@ -43,9 +43,24 @@ img {
     max-width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: #399bff;
+}
+
+a.active, a:focus {
+    outline: none !important;
+    text-decoration: none;
+}
+
 ol, ul, p, h1, h2, h3, h4, h5, h6 {
     padding: 0;
     margin: 0
+}
+
+a:hover {
+    color: #06c;
+    text-decoration: none !important
 }
 
 .mainbox {
@@ -94,7 +109,7 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #632119
+    background-color: #12183A
 }
 
 ::-webkit-scrollbar-track {
@@ -156,7 +171,7 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
 
 .head {
     height: 1.05rem;
-    background: url(../img/head_bg3.svg) no-repeat center center;
+    background: url(../img/head_bg4.svg) no-repeat center center;
     background-size: 100% 100%;
     position: relative;
     z-index: 100;
@@ -203,8 +218,7 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
 .show_time_area .show_time span {
     color: rgba(255, 255, 255, .9);
     font-size: .5rem;
-    font-family: Flyme Number, serif;
-!important;
+    font-family: JetBrainsMono, serif; !important;
 }
 
 .show_time_area .show_date_week {
@@ -218,7 +232,6 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
     flex: 4.5;
     margin-bottom: 0;
 }
-
 .show_time_area .show_date_week .show_week {
     padding: 0;
     flex: 4.5;
@@ -231,15 +244,13 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .boxall {
-    border: 0.0165rem solid rgba(99, 33, 25, .37);
+    border: 0.0165rem dashed rgba(99, 102, 255, .17);
     padding: 0 .2rem .4rem .15rem;
-    background: rgba(39, 11, 11, .26);
+    background: rgba(255, 255, 255, .001) url(../img/line.png);
     background-size: 100% auto;
     position: relative;
     margin-bottom: .15rem;
     z-index: 10;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px)
 }
 
 .boxall:before,
@@ -248,17 +259,17 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
     width: .1rem;
     height: .1rem;
     content: "";
-    border-top: 0.03rem solid #632119;
+    border-top: 0.03rem solid #12183A;
     top: 0;
 }
 
 .boxall:before, .boxfoot:before {
-    border-left: 0.03rem solid #632119;
+    border-left: 0.03rem solid #12183A;
     left: 0;
 }
 
 .boxall:after, .boxfoot:after {
-    border-right: 0.03rem solid #632119;
+    border-right: 0.03rem solid #12183A;
     right: 0;
 }
 
@@ -282,7 +293,7 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
     width: .1rem;
     height: .1rem;
     content: "";
-    border-bottom: 0.03rem solid #632119;
+    border-bottom: 0.03rem solid #12183A;
     bottom: 0;
 }
 
@@ -301,16 +312,16 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .barbox:before {
-    border-left: 0.03rem solid #632119;
+    border-left: 0.03rem solid #12183A;
     left: 0;
-    border-top: 0.03rem solid #632119;
+    border-top: 0.03rem solid #12183A;
 }
 
 .barbox:after {
-    border-right: 0.03rem solid #632119;
+    border-right: 0.03rem solid #12183A;
     right: 0;
     bottom: 0;
-    border-bottom: 0.03rem solid #632119;
+    border-bottom: 0.03rem solid #12183A;
 }
 
 .barbox li, .barbox2 li {
@@ -331,15 +342,15 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .barbox {
-    border: 0.022rem solid rgba(99, 33, 25, .37);
+    border: 0.022rem dashed rgba(99, 102, 255, .17);
     position: relative;
 }
 
 .barbox li {
     font-size: .7rem;
-    color: #F9DE86;
+    color: #4BE5EF;
     padding: .05rem 0;
-    font-family: "Flyme Number", serif;
+    font-family: JetBrainsMono, serif;
     font-weight: bold;
 }
 
@@ -355,9 +366,49 @@ ol, ul, p, h1, h2, h3, h4, h5, h6 {
 
 .map {
     position: relative;
-    height: 8rem;
+    height: 7.2rem;
     z-index: 9;
 }
+
+.map1, .map2, .map3 {
+    position: absolute;
+    opacity: .5
+}
+
+.map1 {
+    width: 6.43rem;
+    z-index: 2;
+    top: .45rem;
+    left: .7rem;
+    animation: myfirst2 15s infinite linear;
+}
+
+.map2 {
+    width: 5.66rem;
+    top: .85rem;
+    left: 1.2rem;
+    z-index: 3;
+    opacity: 0.2;
+    animation: myfirst 10s infinite linear;
+}
+
+.map3 {
+    width: 5.18rem;
+    top: 1.07rem;
+    left: 1.4rem;
+    z-index: 1;
+}
+
+.map4 {
+    width: 120%;
+    height: 7rem;
+    position: relative;
+    left: -10%;
+    top: 4%;
+    margin-top: .2rem;
+    z-index: 5;
+}
+
 
 .tabs {
     text-align: center;
