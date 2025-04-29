@@ -64,6 +64,10 @@
         <div class="top-bar-right">
             {% if user.is_authenticated %}
                 <div class="user-menu">
+                    {#增加头像#}
+                    {% if user.oauthuser_set.first %}
+                        <img class="user-avatar" src="{{ user.oauthuser_set.first.picture }}" alt="{{ user.username }}"/>
+                    {% endif %}
                     <span>{{ user.username }}</span>
                     {% if user.is_superuser %}
                         <div class="dropdown-content">

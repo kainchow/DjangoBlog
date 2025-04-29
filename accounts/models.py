@@ -13,6 +13,7 @@ class BlogUser(AbstractUser):
     creation_time = models.DateTimeField(_('creation time'), default=now)
     last_modify_time = models.DateTimeField(_('last modify time'), default=now)
     source = models.CharField(_('create source'), max_length=100, blank=True)
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse(
