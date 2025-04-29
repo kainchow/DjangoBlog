@@ -8,7 +8,7 @@ services:
       - MYSQL_DATABASE=djangoblog
       - MYSQL_ROOT_PASSWORD=DjAnGoBlOg!2!Q@W#E
     ports:
-      - 3306:3306
+      - "3307:3306"
     volumes:
       - ./bin/datas/mysql/:/var/lib/mysql
     depends_on:
