@@ -45,6 +45,10 @@ msgstr "确认密码"
 msgid "Email"
 msgstr "邮箱"
 
+#: .\accounts\forms.py:27
+msgid "email"
+msgstr "邮箱"
+
 #: .\accounts\forms.py:76 .\accounts\forms.py:80
 msgid "Code"
 msgstr "验证码"
@@ -647,7 +651,15 @@ msgstr "管理站点"
 
 #: .\templates\blog\tags\sidebar.html:122
 msgid "logout"
-msgstr "登出"
+msgstr "退出"
+
+#: .\templates\share_layout\base.html:78
+msgid "Logout"
+msgstr "退出"
+
+#: .\templates\share_layout\base.html:80
+msgid "Login"
+msgstr "登录"
 
 #: .\templates\blog\tags\sidebar.html:129
 msgid "Track record"
@@ -689,3 +701,35 @@ msgstr "大屏"
 #: .\templates\blog\tags\sidebar.html:26
 msgid "Views"
 msgstr "阅读量"
+
+#: .\templates\account\login.html:38
+msgid "Home Page"
+msgstr "首页"
+
+#: .\templates\account\login.html:7
+msgid "Sign in with your Account"
+msgstr "使用您的账户登录"
+
+#: .\templates\account\login.html:25
+msgid "Stay signed in"
+msgstr "保持登录状态"
+
+#: .\templates\account\registration_form.html:25
+msgid "Sign In"
+msgstr "登录"
+
+#: .\templates\account\registration_form.html:20
+msgid "Create Your Account"
+msgstr "创建账户"
+
+#: .\templates\account\forget_password.html:26
+msgid "Login page"
+msgstr "登录页"
+
+#: .\accounts\forms.py:15,25
+msgid "usernameusername"
+msgstr "用户名"
+
+#: .\accounts\forms.py:31
+msgid "repeat password"
+msgstr "再次输入密码"

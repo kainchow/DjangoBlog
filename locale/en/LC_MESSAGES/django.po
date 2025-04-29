@@ -46,6 +46,10 @@ msgstr "Confirm password"
 msgid "Email"
 msgstr "Email"
 
+#: \accounts\forms.py:27
+msgid "email"
+msgstr "email"
+
 #: .\accounts\forms.py:76 .\accounts\forms.py:80
 msgid "Code"
 msgstr "Code"
@@ -667,6 +671,14 @@ msgstr "management site"
 msgid "logout"
 msgstr "logout"
 
+#: .\templates\share_layout\base.html:78
+msgid "Logout"
+msgstr "Logout"
+
+#: .\templates\share_layout\base.html:80
+msgid "Login"
+msgstr "Login"
+
 #: .\templates\blog\tags\sidebar.html:129
 msgid "Track record"
 msgstr "Track record"
@@ -707,3 +719,35 @@ msgstr "Big screen"
 #: .\templates\blog\tags\sidebar.html:26
 msgid "Views"
 msgstr "Views"
+
+#: .\templates\account\login.html:38
+msgid "Home Page"
+msgstr "Home Page"
+
+#: .\templates\account\login.html:7
+msgid "Sign in with your Account"
+msgstr "Sign in with your Account"
+
+#: .\templates\account\login.html:25
+msgid "Stay signed in"
+msgstr "Stay signed in"
+
+#: .\templates\account\registration_form.html:25
+msgid "Sign In"
+msgstr "Sign In"
+
+#: .\templates\account\registration_form.html:20
+msgid "Create Your Account"
+msgstr "Create Your Account"
+
+#: .\templates\account\forget_password.html:26
+msgid "Login page"
+msgstr "Login page"
+
+#: .\accounts\forms.py:15,25
+msgid "username"
+msgstr "username"
+
+#: .\accounts\forms.py:31
+msgid "repeat password"
+msgstr "repeat password"
