@@ -430,7 +430,3 @@ def permission_denied_view(
 def clean_cache_view(request):
     cache.clear()
     return HttpResponse('ok')
-
-
-# def big_screen1_view(request):
-#     return render(request, 'big_screen/big_screen1.html')

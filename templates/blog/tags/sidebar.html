@@ -104,33 +104,14 @@
             </div>
         </aside>
     {% endif %}
-{#    <aside id="text-2" class="widget widget_text"><p class="widget-title">{% trans 'Welcome to star or fork the source code of this site' %}</p>#}
-{#        <div class="textwidget">#}
-{##}
-{#            <p><a href="https://github.com/kainchow/DjangoBlog" rel="nofollow"><img#}
-{#                    src="https://resource.kainchow.net/img.shields.io/github/stars/kainchow/djangoblog.svg?style=social&amp;label=Star"#}
-{#                    alt="GitHub stars"></a> <a href="https://github.com/kainchow/DjangoBlog" rel="nofollow"><img#}
-{#                    src="https://resource.kainchow.net/img.shields.io/github/forks/kainchow/djangoblog.svg?style=social&amp;label=Fork"#}
-{#                    alt="GitHub forks"></a></p>#}
-{#        </div>#}
-{#    </aside>#}
 
-    <aside id="meta-3" class="widget widget_meta"><p class="widget-title">{% trans 'Function' %}</p>
-        <ul>
-{#            <li><a href="/admin/" rel="nofollow">{% trans 'management site' %}</a></li>#}
-{#            {% if user.is_authenticated %}#}
-{#                <li><a href="{% url "account:logout" %}" rel="nofollow">{% trans 'logout' %}</a>#}
-{#                </li>#}
-{##}
-{#            {% else %}#}
-{#                <li><a href="{% url "account:login" %}" rel="nofollow">{% trans 'login' %}</a></li>#}
-{#            {% endif %}#}
-            {% if user.is_superuser %}
+    {% if user.is_superuser %}
+        <aside id="meta-3" class="widget widget_meta"><p class="widget-title">{% trans 'Function' %}</p>
+            <ul>
                 <li><a href="{% url 'owntracks:show_dates' %}" target="_blank">{% trans 'Track record' %}</a></li>
-            {% endif %}
-{#            <li><a href="http://gitbook.kainchow.net" target="_blank" rel="nofollow">GitBook</a></li>#}
-        </ul>
-    </aside>
+            </ul>
+        </aside>
+    {% endif %}
 
     <div id="rocket" class="show" title="{% trans 'Click me to return to the top' %}"></div>
 </div><!-- #secondary -->

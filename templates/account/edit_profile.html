@@ -1,0 +1,24 @@
+{% extends 'share_layout/base_account.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <div class="container">
+
+        <h1 class="form-signin-heading text-center">{% trans 'Edit Personal Info' %}</h1>
+
+        <div class="card-profile">
+            <form class="form-profile" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">{% trans 'Save' %}</button>
+                <a href="{% url 'account:user_profile' username=request.user.username %}" class="button-like-link" role="button">
+                    {% trans 'Back' %}
+                </a>
+            </form>
+        </div>
+
+        <p class="text-center login-footer-links">
+            <a href="/">{% trans 'Home Page' %}</a>
+        </p>
+    </div>
+{% endblock %}

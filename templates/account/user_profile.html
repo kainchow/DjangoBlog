@@ -1,0 +1,32 @@
+{% extends 'share_layout/base_account.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <div class="container">
+
+        <h1 class="form-signin-heading text-center">{% trans 'Personal Info' %}</h1>
+
+        <div class="card-profile">
+            {% if user.avatar %}
+                <img class="img-circle profile-img" src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.username }}"/>
+            {% elif user.oauthuser_set.first %}
+                <img class="img-circle profile-img" src="{{ user.oauthuser_set.first.picture }}" alt="{{ user.username }}"/>
+            {% endif %}
+
+            <h3>{{ profile_user.username }}</h3>
+            <p>{% trans 'nick name' %}: {{ profile_user.nickname }}</p>
+            <p>{% trans 'first name' %}: {{ profile_user.first_name }}</p>
+            <p>{% trans 'last name' %}: {{ profile_user.last_name }}</p>
+            <p>{% trans 'email address' %}: {{ profile_user.email }}</p>
+            <p>{% trans 'date joined' %}: {{ profile_user.date_joined|date:"Y-m-d" }}</p>
+
+            {% if request.user == profile_user %}
+                <a href="{% url 'account:edit_profile' %}"><button>{% trans 'Edit personal info' %}</button></a>
+            {% endif %}
+        </div>
+
+        <p class="text-center login-footer-links">
+            <a href="/">{% trans 'Home Page' %}</a>
+        </p>
+    </div>
+{% endblock %}

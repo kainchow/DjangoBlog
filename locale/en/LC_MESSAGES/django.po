@@ -664,8 +664,8 @@ msgid "Function"
 msgstr "Function"
 
 #: .\templates\blog\tags\sidebar.html:120
-msgid "management site"
-msgstr "management site"
+msgid "Management Site"
+msgstr "Management Site"
 
 #: .\templates\blog\tags\sidebar.html:122
 msgid "logout"
@@ -751,3 +751,39 @@ msgstr "username"
 #: .\accounts\forms.py:31
 msgid "repeat password"
 msgstr "repeat password"
+
+#: .\accounts\models.py:17
+msgid "avatar"
+msgstr "avatar"
+
+#: .\templates\share_layout\base.html:61
+msgid "Search..."
+msgstr "Search..."
+
+#: .\templates\share_layout\footer.html:19
+msgid "Hosting On"
+msgstr "Hosting On"
+
+#: .\templates\share_layout\footer.html:35
+msgid "This page takes time to load"
+msgstr "This page takes time to load"
+
+#: .\templates\share_layout\base.html:75 .\templates\account\user_profile.html:7
+msgid "Personal Info"
+msgstr "Personal Info"
+
+#: .\templates\account\user_profile.html:24
+msgid "Edit personal info"
+msgstr "Edit personal info"
+
+#: .\templates\account\edit_profile.html:7
+msgid "Edit Personal Info"
+msgstr "Edit Personal Info"
+
+#: .\templates\account\edit_profile.html:14
+msgid "Back"
+msgstr "Back"
+
+#: .\templates\blog\tags\article_info.html:53
+msgid "Read more"
+msgstr "Read more"

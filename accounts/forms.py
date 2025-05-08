@@ -8,6 +8,9 @@ from . import utils
 from .models import BlogUser
 
 
+User = get_user_model()
+
+
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
@@ -115,3 +118,9 @@ class ForgetPasswordCodeForm(forms.Form):
     email = forms.EmailField(
         label=_('Email'),
     )
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['nickname', 'first_name', 'last_name', 'email', 'avatar']

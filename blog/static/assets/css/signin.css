@@ -11,7 +11,7 @@ body {
 }
 .form-signin-heading {
   margin: 0 0 15px;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 400;
   color: #fff;
 }
@@ -72,11 +72,66 @@ body {
   width: 354px;
   padding: 40px;
 }
-.card-signin .profile-img {
+.card-profile {
+  width: 100%;
+  padding: 1.25rem 1.5625rem 1.875rem;
+  margin: 0 auto 1.5625rem;
+  background-color: rgba(18, 18, 18, 0.8);
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+  color: #dbdbdb;
+  text-align: center;
+}
+.card-profile p {
+  font-size: 1.5rem;
+}
+.card-profile p, h2, a {
+  margin-bottom: 1.8rem;
+}
+.card-signin .profile-img,
+.card-profile .profile-img {
   display: block;
   width: 96px;
   height: 96px;
   margin: 0 auto 10px;
+  object-fit: cover;
+}
+.form-profile input {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+  font-size: 15px;
+  color: #1a1a1a;
+}
+.form-profile input[id="id_avatar"] {
+  color: #dbdbdb;
+}
+.form-profile input::placeholder {
+  font-size: 14px;
+}
+.form-profile input:focus {
+  z-index: 2;
+}
+/*.form-profile button {*/
+/*    color: #1a1a1a;*/
+/*}*/
+.card-profile .button-like-link,
+.card-profile button {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+}
+.card-profile .button-like-link:hover,
+.card-profile .button-like-link:hover {
+    background-color: #e0e0e0;
 }
 .widget-login {
   font-size: 15px;

@@ -1,4 +1,6 @@
 import logging
+
+from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.contrib import auth
@@ -10,7 +12,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -23,10 +25,13 @@ from django.views.generic import FormView, RedirectView
 
 from djangoblog.utils import send_email, get_sha256, get_current_site, generate_code, delete_sidebar_cache
 from . import utils
-from .forms import RegisterForm, LoginForm, ForgetPasswordForm, ForgetPasswordCodeForm
+from .forms import RegisterForm, LoginForm, ForgetPasswordForm, ForgetPasswordCodeForm, EditProfileForm
 from .models import BlogUser
 
 logger = logging.getLogger(__name__)
+
+
+User = get_user_model()
 
 
 # Create your views here.
@@ -202,3 +207,21 @@ class ForgetPasswordEmailCode(View):
         utils.set_code(to_email, code)
 
         return HttpResponse("ok")
+
+
+def user_profile_view(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, 'account/user_profile.html', {'profile_user': user})
+
+
+@login_required
+def edit_profile_view(request):
+    user = request.user
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect(user.get_user_profile_url())
+    else:
+        form = EditProfileForm(instance=user)
+    return render(request, 'account/edit_profile.html', {'form': form})

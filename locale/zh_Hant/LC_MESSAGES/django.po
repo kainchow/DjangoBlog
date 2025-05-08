@@ -647,7 +647,7 @@ msgid "Function"
 msgstr "功能"
 
 #: .\templates\blog\tags\sidebar.html:120
-msgid "management site"
+msgid "Management Site"
 msgstr "管理站點"
 
 #: .\templates\blog\tags\sidebar.html:122
@@ -734,3 +734,39 @@ msgstr "用戶名"
 #: .\accounts\forms.py:31
 msgid "repeat password"
 msgstr "再次輸入密碼"
+
+#: .\accounts\models.py:17
+msgid "avatar"
+msgstr "頭像"
+
+#: .\templates\share_layout\base.html:61
+msgid "Search..."
+msgstr "搜尋..."
+
+#: .\templates\share_layout\footer.html:19
+msgid "Hosting On"
+msgstr "託管上"
+
+#: .\templates\share_layout\footer.html:35
+msgid "This page takes time to load"
+msgstr "此頁面載入需時"
+
+#: .\templates\share_layout\base.html:75 .\templates\account\user_profile.html:7
+msgid "Personal Info"
+msgstr "個人資料"
+
+#: .\templates\account\user_profile.html:24
+msgid "Edit personal info"
+msgstr "編輯個人資料"
+
+#: .\templates\account\edit_profile.html:7
+msgid "Edit Personal Info"
+msgstr "編輯個人資料"
+
+#: .\templates\account\edit_profile.html:14
+msgid "Back"
+msgstr "返回"
+
+#: .\templates\blog\tags\article_info.html:53
+msgid "Read more"
+msgstr "閱讀全文"

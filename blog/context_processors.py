@@ -2,6 +2,7 @@ import logging
 
 from django.utils import timezone
 
+from djangoblog import settings
 from djangoblog.utils import cache, get_blog_setting
 from .models import Category, Article
 
@@ -41,3 +42,7 @@ def seo_processor(requests):
         }
         cache.set(key, value, 60 * 60 * 10)
         return value
+
+    
+def media_url_processor(request):
+    return {'MEDIA_URL': settings.MEDIA_URL}

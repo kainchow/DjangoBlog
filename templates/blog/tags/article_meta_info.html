@@ -6,8 +6,6 @@
     {% trans 'posted in' %}
     <a href="{{ article.category.get_absolute_url }}" rel="category tag">{{ article.category.name }}</a>
 
-
-    </a>
     {% if article.type == 'a' %}
         {% if article.tags.all %}
 
@@ -19,10 +17,9 @@
                 {% endif %}
             {% endfor %}
 
-
         {% endif %}
     {% endif %}
-    .{% trans 'by ' %}
+    . {% trans 'by ' %}
     <span class="by-author">
         <span class="author vcard">
             <a class="url fn n" href="{{ article.author.get_absolute_url }}"
@@ -31,28 +28,21 @@
                     {% endblocktranslate %}
                rel="author">
             <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-
-            <span itemprop="name" itemprop="publisher">
-
-            {{ article.author.username }}
-        </span>
+                <span itemprop="name" itemprop="publisher">
+                    {{ article.author.username }}
+                </span>
             </span>
-    </a>
-
-
+            </a>
         </span>
-{% trans 'on' %}
-     <a href="{{ article.get_absolute_url }}"
-        title="{% datetimeformat article.pub_time %}"
-        itemprop="datePublished" content="{% datetimeformat article.pub_time %}"
-        rel="bookmark">
-
-    <time class="entry-date updated"
-          datetime="{{ article.pub_time }}">
-        {% datetimeformat article.pub_time %}</time>
-         {% if user.is_superuser %}
-             <a href="{{ article.get_admin_url }}">{% trans 'edit' %}</a>
-         {% endif %}
+        {% trans 'on' %}
+        <time class="entry-date updated" datetime="{{ article.pub_time }}">
+            {% datetimeformat article.pub_time %}
+        </time>
+        {% if user.is_superuser %}
+            <a href="{{ article.get_admin_url }}">{% trans 'edit' %}</a>
+        {% else %}
+            {% trans 'edit' %}
+        {% endif %}
     </span>
 </footer><!-- .entry-meta -->
 
